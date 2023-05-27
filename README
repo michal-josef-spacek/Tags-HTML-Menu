@@ -1,0 +1,120 @@
+NAME
+    Tags::HTML::Menu - Tags helper for menu.
+
+SYNOPSIS
+     use Tags::HTML::Menu;
+
+     my $obj = Tags::HTML::Menu->new(%params);
+     $obj->process($data_hr);
+
+METHODS
+  "new"
+     my $obj = Tags::HTML::Menu->new(%params);
+
+    Constructor.
+
+    Returns instance of object.
+
+    *       "css_competition"
+
+            CSS class for root div element.
+
+            Default value is 'competition'.
+
+    *       "TODO"
+
+            TODO
+
+    *       "tags"
+
+            'Tags::Output' object.
+
+            Default value is undef.
+
+  "process"
+     $obj->process($data_hr);
+
+    Process Tags structure for output with information about menu. Structure
+    consists from: { 'login_name' => __LOGIN_NAME__ (optional - default is
+    'Login name') 'section' => __SECTION__ (optional - default is 'Section')
+    }
+
+    Returns undef.
+
+ERRORS
+     new():
+             From Class::Utils::set_params():
+                     Unknown parameter '%s'.
+             Parameter 'logout_url' is required.
+
+EXAMPLE1
+     use strict;
+     use warnings;
+
+     use Tags::HTML::Menu;
+     use Tags::Output::Indent;
+
+     # Object.
+     my $tags = Tags::Output::Indent->new;
+     my $obj = Tags::HTML::Menu->new(
+             'logo_image_url' => 'http://example.com/image.png',
+             'logout_url' => 'https://example.com/logout',
+             'tags' => $tags,
+     );
+
+     # Process list of competitions.
+     $obj->process({
+             'login_name' => 'Skim',
+             'section' => 'Application',
+     });
+
+     # Print out.
+     print $tags->flush;
+
+     # Output:
+     # <header class="menu">
+     #   <div id="container">
+     #     <span id="menu-left">
+     #       <img id="logo" src="http://example.com/image.png"
+     #         alt="logo">
+     #       </img>
+     #       <span id="section">
+     #         Application
+     #       </span>
+     #     </span>
+     #     <span id="menu-right">
+     #       <span id="login">
+     #         Skim
+     #         (
+     #         <a href="https://example.com/logout">
+     #           Log out
+     #         </a>
+     #         )
+     #       </span>
+     #     </span>
+     #   </div>
+     # </header>
+
+DEPENDENCIES
+    Class::Utils, Commons::link, Error::Pure, Tags::HTML,
+    Tags::HTML::Commons::Vote::Utils.
+
+SEE ALSO
+        TODO
+
+REPOSITORY
+    <https://github.com/michal-josef-spacek/Tags-HTML-Menu>
+
+AUTHOR
+    Michal Josef Špaček <mailto:skim@cpan.org>
+
+    <http://skim.cz>
+
+LICENSE AND COPYRIGHT
+    © 2021-2023 Michal Josef Špaček
+
+    BSD 2-Clause License
+
+VERSION
+    0.01
+
