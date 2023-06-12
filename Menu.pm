@@ -15,10 +15,10 @@ sub new {
 
 	# Create object.
 	my ($object_params_ar, $other_params_ar) = split_params(
-		['css_main', 'lang', 'logo_image_url', 'logo_url', 'logout_url', 'text'], @params);
+		['css_menu', 'lang', 'logo_image_url', 'logo_url', 'logout_url', 'text'], @params);
 	my $self = $class->SUPER::new(@{$other_params_ar});
 
-	$self->{'css_main'} = 'menu';
+	$self->{'css_menu'} = 'menu';
 
 	# Language.
 	$self->{'lang'} = 'eng';
@@ -80,7 +80,7 @@ sub _process {
 
 	$self->{'tags'}->put(
 		['b', 'header'],
-		['a', 'class', $self->{'css_main'}],
+		['a', 'class', $self->{'css_menu'}],
 
 		['b', 'div'],
 		['a', 'id', 'container'],
@@ -150,7 +150,7 @@ sub _process_css {
 	my $self = shift;
 
 	$self->{'css'}->put(
-		['s', '.'.$self->{'css_main'}],
+		['s', '.'.$self->{'css_menu'}],
 		['d', 'border-bottom', '1px solid black'],
 		['d', 'line-height', '100px'],
 		['e'],
