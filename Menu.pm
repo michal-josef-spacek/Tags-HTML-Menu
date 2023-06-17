@@ -117,6 +117,8 @@ sub _process {
 		['e', 'span'],
 
 		# Right menu part.
+		# TODO Menu items.
+		# TODO Language
 		defined $self->{'_data'}->{'login_name'} ? (
 			['b', 'span'],
 			['a', 'id', 'menu-right'],
