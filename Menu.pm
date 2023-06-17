@@ -27,7 +27,7 @@ sub new {
 	$self->{'logo_image_url'} = undef;
 
 	# Logo width in pixels.
-	$self->{'logo_width'} = 100;
+	$self->{'logo_width'} = '20vw';
 
 	# Logo URL.
 	$self->{'logo_url'} = undef;
@@ -97,7 +97,6 @@ sub _process {
 			) : (),
 			['b', 'img'],
 			['a', 'id', 'logo'],
-			# TODO Width
 			['a', 'src', $self->{'logo_image_url'}],
 			['a', 'alt', 'logo'],
 			['e', 'img'],
@@ -159,6 +158,7 @@ sub _process_css {
 
 		['s', '#menu-left #logo'],
 		['d', 'vertical-align', 'middle'],
+		['d', 'width', $self->{'logo_width'}],
 		['e'],
 
 		['s', '#menu-left #title'],
