@@ -15,7 +15,7 @@ sub new {
 
 	# Create object.
 	my ($object_params_ar, $other_params_ar) = split_params(
-		['css_menu', 'lang', 'logo_image_url', 'logo_url', 'logout_url', 'text'], @params);
+		['css_menu', 'lang', 'logo_image_url', 'logo_url', 'logo_width', 'logout_url', 'text'], @params);
 	my $self = $class->SUPER::new(@{$other_params_ar});
 
 	$self->{'css_menu'} = 'menu';
