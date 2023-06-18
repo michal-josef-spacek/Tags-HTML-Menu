@@ -19,6 +19,7 @@ meta-spec:
 name: Tags-HTML-Menu
 no_index:
   directory:
+    - examples
     - inc
     - t
     - xt

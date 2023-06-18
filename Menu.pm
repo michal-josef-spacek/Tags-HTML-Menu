@@ -247,6 +247,8 @@ Returns undef.
 
 =head1 EXAMPLE1
 
+=for comment filename=html_menu.pl
+
  use strict;
  use warnings;
 
