@@ -82,47 +82,37 @@ sub _process {
 		['b', 'header'],
 		['a', 'class', $self->{'css_menu'}],
 
-		['b', 'div'],
-		['a', 'id', 'container'],
-
-		# Left menu part.
-		['b', 'span'],
-		['a', 'id', 'menu-left'],
-
 		# Logo.
 		defined $self->{'logo_image_url'} ? (
+			['b', 'div'],
+			['a', 'id', 'logo'],
 			defined $self->{'logo_url'} ? (
 				['b', 'a'],
 				['a', 'href', $self->{'logo_url'}],
 			) : (),
 			['b', 'img'],
-			['a', 'id', 'logo'],
 			['a', 'src', $self->{'logo_image_url'}],
 			['a', 'alt', 'logo'],
 			['e', 'img'],
 			defined $self->{'logo_url'} ? (
 				['e', 'a'],
 			) : (),
+			['e', 'div'],
 		) : (),
 
 		# Actual title.
 		defined $self->{'_data'}->{'title'} ? (
-			['b', 'span'],
+			['b', 'div'],
 			['a', 'id', 'title'],
 			['d', $self->{'_data'}->{'title'}],
-			['e', 'span'],
+			['e', 'div'],
 		) : (),
-
-		['e', 'span'],
 
 		# Right menu part.
 		# TODO Menu items.
 		# TODO Language
 		defined $self->{'_data'}->{'login_name'} ? (
-			['b', 'span'],
-			['a', 'id', 'menu-right'],
-
-			['b', 'span'],
+			['b', 'div'],
 			['a', 'id', 'login'],
 			# Login name
 			['d', $self->{'_data'}->{'login_name'}],
@@ -134,12 +124,8 @@ sub _process {
 			['d', $self->_text('logout')],
 			['e', 'a'],
 			['d', ')'],
-			['e', 'span'],
-
-			['e', 'span'],
+			['e', 'div'],
 		) : (),
-
-		['e', 'div'],
 
 		['e', 'header'],
 	);
@@ -152,27 +138,28 @@ sub _process_css {
 
 	$self->{'css'}->put(
 		['s', '.'.$self->{'css_menu'}],
+		['d', 'display', 'flex'],
+		['d', 'align-items', 'center'],
 		['d', 'border-bottom', '1px solid black'],
-		['d', 'line-height', '100px'],
 		['e'],
 
-		['s', '#menu-left #logo'],
-		['d', 'vertical-align', 'middle'],
+		['s', '#logo'],
+		['d', 'margin-right', '10px'],
+		['e'],
+
+		['s', '#logo img'],
 		['d', 'width', $self->{'logo_width'}],
 		['e'],
 
-		['s', '#menu-left #title'],
-		['d', 'vertical-align', 'middle'],
-		['d', 'padding-left', '10px'],
+		['s', '#title'],
+		['d', 'padding', '5px'],
+		['d', 'margin-right', '10px'],
 		['d', 'font-size', '2em'],
 		['e'],
 
-		['s', '#menu-right'],
-		['d', 'float', 'right'],
-		['e'],
-
-		['s', '#menu-right #login'],
-		['d', 'vertical-align', 'middle'],
+		['s', '#login'],
+		['d', 'margin-left', 'auto'],
+		['d', 'padding-right', '10px'],
 		['e'],
 	);
 
@@ -275,35 +262,32 @@ Returns undef.
  );
 
  # Process list of competitions.
- $obj->process({
+ $obj->init({
          'login_name' => 'Skim',
-         'section' => 'Application',
+         'title' => 'Application',
  });
+ $obj->process;
 
  # Print out.
  print $tags->flush;
 
  # Output:
  # <header class="menu">
- #   <div id="container">
- #     <span id="menu-left">
- #       <img id="logo" src="http://example.com/image.png"
- #         alt="logo">
- #       </img>
- #       <span id="section">
- #         Application
- #       </span>
- #     </span>
- #     <span id="menu-right">
- #       <span id="login">
- #         Skim
- #         (
- #         <a href="https://example.com/logout">
- #           Log out
- #         </a>
- #         )
- #       </span>
- #     </span>
+ #   <div id="logo">
+ #     <img src="http://example.com/image.png" alt="logo">
+ #     </img>
+ #   </div>
+ #   <div id="title">
+ #     Application
+ #   </div>
+ #   <div id="login">
+ #     Skim
+ #     &nbsp;
+ #     (
+ #     <a href="https://example.com/logout">
+ #       Log out
+ #     </a>
+ #     )
  #   </div>
  # </header>
 

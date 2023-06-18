@@ -63,41 +63,37 @@ EXAMPLE1
      );
 
      # Process list of competitions.
-     $obj->process({
+     $obj->init({
              'login_name' => 'Skim',
-             'section' => 'Application',
+             'title' => 'Application',
      });
+     $obj->process;
 
      # Print out.
      print $tags->flush;
 
      # Output:
      # <header class="menu">
-     #   <div id="container">
-     #     <span id="menu-left">
-     #       <img id="logo" src="http://example.com/image.png"
-     #         alt="logo">
-     #       </img>
-     #       <span id="section">
-     #         Application
-     #       </span>
-     #     </span>
-     #     <span id="menu-right">
-     #       <span id="login">
-     #         Skim
-     #         (
-     #         <a href="https://example.com/logout">
-     #           Log out
-     #         </a>
-     #         )
-     #       </span>
-     #     </span>
+     #   <div id="logo">
+     #     <img src="http://example.com/image.png" alt="logo">
+     #     </img>
+     #   </div>
+     #   <div id="title">
+     #     Application
+     #   </div>
+     #   <div id="login">
+     #     Skim
+     #     &nbsp;
+     #     (
+     #     <a href="https://example.com/logout">
+     #       Log out
+     #     </a>
+     #     )
      #   </div>
      # </header>
 
 DEPENDENCIES
-    Class::Utils, Commons::link, Error::Pure, Tags::HTML,
-    Tags::HTML::Commons::Vote::Utils.
+    Class::Utils, Error::Pure, Tags::HTML.
 
 SEE ALSO
         TODO
