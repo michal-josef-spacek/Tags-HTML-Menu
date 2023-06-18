@@ -149,6 +149,7 @@ sub _process_css {
 
 		['s', '#logo img'],
 		['d', 'width', $self->{'logo_width'}],
+		['d', 'padding', '10px'],
 		['e'],
 
 		['s', '#title'],
