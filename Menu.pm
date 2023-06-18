@@ -26,11 +26,11 @@ sub new {
 	# Logo.
 	$self->{'logo_image_url'} = undef;
 
-	# Logo width in pixels.
-	$self->{'logo_width'} = '20vw';
-
 	# Logo URL.
 	$self->{'logo_url'} = undef;
+
+	# Logo width in pixels.
+	$self->{'logo_width'} = '20vw';
 
 	# Logout URL.
 	$self->{'logout_url'} = undef;
