@@ -65,10 +65,6 @@ sub _cleanup {
 sub _init {
 	my ($self, $data_hr) = @_;
 
-	if (exists $self->{'_data'}) {
-		return;
-	}
-
 	$self->{'_data'} = $data_hr;
 
 	return;
