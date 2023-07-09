@@ -134,6 +134,7 @@ sub _process_css {
 		['d', 'display', 'flex'],
 		['d', 'align-items', 'center'],
 		['d', 'border-bottom', '1px solid black'],
+		['d', 'height', '8em'],
 		['e'],
 
 		['s', '#logo'],
@@ -141,6 +142,7 @@ sub _process_css {
 		['e'],
 
 		['s', '#logo img'],
+		['d', 'height', '7em'],
 		['d', 'padding', '10px'],
 		['e'],
 
