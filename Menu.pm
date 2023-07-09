@@ -15,7 +15,7 @@ sub new {
 
 	# Create object.
 	my ($object_params_ar, $other_params_ar) = split_params(
-		['css_menu', 'lang', 'logo_image_url', 'logo_url', 'logo_width', 'logout_url', 'text'], @params);
+		['css_menu', 'lang', 'logo_image_url', 'logo_url', 'logout_url', 'text'], @params);
 	my $self = $class->SUPER::new(@{$other_params_ar});
 
 	$self->{'css_menu'} = 'menu';
@@ -28,9 +28,6 @@ sub new {
 
 	# Logo URL.
 	$self->{'logo_url'} = undef;
-
-	# Logo width in pixels.
-	$self->{'logo_width'} = '20vw';
 
 	# Logout URL.
 	$self->{'logout_url'} = undef;
@@ -144,7 +141,6 @@ sub _process_css {
 		['e'],
 
 		['s', '#logo img'],
-		['d', 'width', $self->{'logo_width'}],
 		['d', 'padding', '10px'],
 		['e'],
 
