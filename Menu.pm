@@ -15,13 +15,17 @@ sub new {
 
 	# Create object.
 	my ($object_params_ar, $other_params_ar) = split_params(
-		['css_menu', 'lang', 'logo_image_url', 'logo_url', 'logout_url', 'text'], @params);
+		['css_menu', 'lang', 'login_name_url', 'logo_image_url',
+		'logo_url', 'logout_url', 'text'], @params);
 	my $self = $class->SUPER::new(@{$other_params_ar});
 
 	$self->{'css_menu'} = 'menu';
 
 	# Language.
 	$self->{'lang'} = 'eng';
+
+	# Login name URL.
+	$self->{'login_name_url'} = undef;
 
 	# Logo.
 	$self->{'logo_image_url'} = undef;
@@ -108,7 +112,14 @@ sub _process {
 			['b', 'div'],
 			['a', 'id', 'login'],
 			# Login name
+			defined $self->{'login_name_url'} ? (
+				['b', 'a'],
+				['a', 'href', $self->{'login_name_url'}],
+			) : (),
 			['d', $self->{'_data'}->{'login_name'}],
+			defined $self->{'login_name_url'} ? (
+				['e', 'a'],
+			) : (),
 			['d', '&nbsp;'],
 			# Logout link
 			['d', '('],
